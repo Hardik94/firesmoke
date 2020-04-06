@@ -13,7 +13,7 @@ class fireSmokeDataset(Dataset):
 	def load_dataset(self, dataset_dir, is_train=True):
 		# define one class
 		self.add_class("dataset", 1, "Fire")
-		self.add_class("dataset", 2, "Smoke")
+		# self.add_class("dataset", 2, "Smoke")
 		# define data locations
 		images_dir = dataset_dir + '/images/'
 		annotations_dir = dataset_dir + '/annots/'
@@ -75,7 +75,8 @@ class fireSmokeDataset(Dataset):
 			row_s, row_e = box[1], box[3]
 			col_s, col_e = box[0], box[2]
 			masks[row_s:row_e, col_s:col_e, i] = 1
-			class_ids.append(self.class_names.index(label[i]))
+			# class_ids.append(self.class_names.index(label[i]))
+			class_ids.append(self.class_names.index('Fire'))
 
 		return masks, asarray(class_ids, dtype='int32')
 
